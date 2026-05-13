@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke4Trade - Buy, Sell & Trade Pokémon Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    
+    <!-- React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="pokeball-pattern"></div>
+    <div id="root"></div>
+
+    <!-- Utils & Config -->
+    <script src="dist/js/utils/api.js"></script>
+    <script src="dist/js/utils/helpers.js"></script>
+    
+    <!-- Context -->
+    <script src="dist/js/context/AuthContext.js"></script>
+    <script src="dist/js/context/ToastContext.js"></script>
+    <script src="dist/js/context/CartContext.js"></script>
+    
+    <!-- Components -->
+    <script src="dist/js/components/Header.js"></script>
+    <script src="dist/js/components/Footer.js"></script>
+    <script src="dist/js/components/Loading.js"></script>
+    <script src="dist/js/components/CardModal.js"></script>
+    <script src="dist/js/components/Pagination.js"></script>
+    <script src="dist/js/components/SearchBar.js"></script>
+    
+    <!-- Pages -->
+    <script src="dist/js/pages/HomePage.js"></script>
+    <script src="dist/js/pages/SignInPage.js"></script>
+    <script src="dist/js/pages/RegisterPage.js"></script>
+    <script src="dist/js/pages/SetsPage.js"></script>
+    <script src="dist/js/pages/SetDetailPage.js"></script>
+    <script src="dist/js/pages/TradePage.js"></script>
+    <script src="dist/js/pages/TradeMatchPage.js"></script>
+    <script src="dist/js/pages/MyTradesPage.js"></script>
+    <script src="dist/js/pages/ShopPage.js"></script>
+    <script src="dist/js/pages/CartPage.js"></script>
+    <script src="dist/js/pages/CheckoutPage.js"></script>
+    <script src="dist/js/pages/MyOrdersPage.js"></script>
+    <script src="dist/js/pages/SettingsPage.js"></script>
+    <script src="dist/js/pages/CollectionPage.js"></script>
+    
+    <!-- Main App -->
+    <script src="dist/js/pages/ProfilePage.js"></script>
+    <script src="dist/js/pages/MyCardsPage.js"></script>
+    <script src="dist/js/pages/MyShopPage.js"></script>
+    <script src="dist/js/pages/SellHistoryPage.js"></script>
+    <script src="dist/js/pages/AdminSettingsPage.js"></script>
+    <script src="dist/js/App.js"></script>
+</body>
+</html>

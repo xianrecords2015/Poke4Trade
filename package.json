@@ -1,0 +1,30 @@
+{
+  "name": "poke4trade",
+  "version": "2.0.0",
+  "description": "Pokemon Trading Card Exchange Platform",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "build": "./build.sh"
+  },
+  "author": "Christian",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "better-sqlite3": "^12.5.0",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "mysql2": "^3.15.3",
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^7.0.11",
+    "stripe": "^20.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "nodemon": "^3.1.11"
+  }
+}

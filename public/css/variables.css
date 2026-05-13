@@ -1,0 +1,103 @@
+/* ===================================
+   CSS Variables - Design Tokens
+   =================================== */
+
+:root {
+    /* Brand Colors */
+    --poke-yellow: #FFCB05;
+    --poke-blue: #3D7DCA;
+    --poke-dark-blue: #1D2C5E;
+    --poke-red: #CC0000;
+    --poke-light: #F5F5F5;
+    --card-gold: #D4AF37;
+    
+    /* Holographic Gradient */
+    --holo-gradient: linear-gradient(
+        135deg,
+        #ff6b6b 0%,
+        #ffd93d 16%,
+        #6bcb77 33%,
+        #4d96ff 50%,
+        #9b59b6 66%,
+        #ff6b6b 83%,
+        #ffd93d 100%
+    );
+    
+    /* Energy Type Colors */
+    --energy-fire: #FF6B35;
+    --energy-water: #4ECDC4;
+    --energy-grass: #7CB518;
+    --energy-electric: #FFD93D;
+    --energy-psychic: #9B59B6;
+    --energy-fighting: #D56723;
+    --energy-darkness: #5A5A6E;
+    --energy-metal: #8A8A9E;
+    --energy-fairy: #E93EB8;
+    --energy-dragon: #7038F8;
+    
+    /* UI Colors */
+    --bg-primary: var(--poke-dark-blue);
+    --bg-secondary: rgba(42, 63, 109, 0.8);
+    --bg-tertiary: rgba(26, 40, 71, 0.8);
+    --bg-overlay: rgba(0, 0, 0, 0.3);
+    
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --text-hint: rgba(255, 255, 255, 0.4);
+    
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-medium: rgba(255, 255, 255, 0.2);
+    --border-accent: rgba(255, 203, 5, 0.3);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(255, 203, 5, 0.3);
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 50px;
+    
+    /* Typography */
+    --font-display: 'Fredoka One', 'Outfit', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+    
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.5rem;
+    --text-5xl: 3rem;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-Index Scale */
+    --z-dropdown: 100;
+    --z-sticky: 500;
+    --z-header: 1000;
+    --z-modal: 2000;
+    --z-toast: 3000;
+    
+    /* Container */
+    --container-max: 1400px;
+}
