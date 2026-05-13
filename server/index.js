@@ -53,6 +53,15 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+        env: process.env.NODE_ENV || 'unknown',
+        commit: process.env.COMMIT_SHA || 'unknown',
+        time: new Date().toISOString()
+    });
+});
+
 const hashPassword = (password) => {
     return crypto.createHash('sha256').update(password).digest('hex');
 };
@@ -4328,8 +4337,8 @@ async function start() {
     const stats = await database.getStats();
     console.log(`Database: ${stats.sets} sets, ${stats.cards} cards`);
     
-    const HTTP_PORT = 8081;
-    const HTTPS_PORT = 8443;
+    const HTTP_PORT = parseInt(process.env.PORT, 10) || 8081;
+    const HTTPS_PORT = parseInt(process.env.HTTPS_PORT, 10) || 8443;
     
     // Start HTTP server
     http.createServer(app).listen(HTTP_PORT, '0.0.0.0', () => {

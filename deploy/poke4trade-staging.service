@@ -1,0 +1,24 @@
+[Unit]
+Description=Poke4Trade Staging Server
+After=network.target mariadb.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/poke4trade-staging
+ExecStart=/usr/bin/node /home/pi/poke4trade-staging/server/index.js
+Restart=always
+RestartSec=10
+
+# Static env — these override values in .env via dotenv.
+Environment=NODE_ENV=production
+Environment=PORT=8082
+Environment=DB_NAME=poke4trade_staging
+
+# Runtime env (COMMIT_SHA) — written fresh by deploy-staging.sh on every deploy.
+# The leading "-" makes the file optional so the unit can start even if the
+# file is missing (e.g. before the first deploy).
+EnvironmentFile=-/home/pi/poke4trade-staging/.env.runtime
+
+[Install]
+WantedBy=multi-user.target

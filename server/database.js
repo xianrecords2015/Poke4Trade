@@ -2,10 +2,10 @@ const mysql = require('mysql2/promise');
 const { execSync } = require('child_process');
 
 const pool = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'poke4trade',
-    password: 'poke4trade123',
-    database: 'poke4trade',
+    host: process.env.DB_HOST || '127.0.0.1',
+    user: process.env.DB_USER || 'poke4trade',
+    password: process.env.DB_PASSWORD || 'poke4trade123',
+    database: process.env.DB_NAME || 'poke4trade',
     waitForConnections: true,
     connectionLimit: 10
 });
