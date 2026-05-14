@@ -26,7 +26,11 @@ MySQL connection in `server/database.js` reads `DB_HOST`/`DB_USER`/`DB_PASSWORD`
 
 HTTP/HTTPS ports in `server/index.js` similarly read `PORT` / `HTTPS_PORT` from env, defaulting to 8081 / 8443. The HTTPS listener still only starts if `ssl/key.pem` + `ssl/cert.pem` exist.
 
-`GET /health` returns `200` with `{ status, env, commit, time }` and is **unauthenticated** — used by deploy/rollback scripts and any external uptime check. `commit` reflects `process.env.COMMIT_SHA`, written by the deploy scripts into `<repo>/.env.runtime` and surfaced via the systemd unit's `EnvironmentFile=` directive.
+`GET /health` returns `200` with `{ status, env, app_env, commit, time }` and is **unauthenticated** — used by deploy/rollback scripts and any external uptime check. `env` is `process.env.NODE_ENV`; `app_env` is `process.env.APP_ENV` (set in staging `.env` to `staging`; unset in prod, returned as `null`). `commit` reflects `process.env.COMMIT_SHA`, written by the deploy scripts into `<repo>/.env.runtime` and surfaced via the systemd unit's `EnvironmentFile=` directive.
+
+Startup also runs an **env-consistency guard** (top of `server/index.js`): if `APP_ENV` is set, it must match the schema name pattern in `DB_NAME` (`staging` ↔ contains "staging"). Mismatch fails fast with a `FATAL:` log and `process.exit(1)`, preventing a misconfigured staging from connecting to prod's DB and vice versa. The guard is dormant when `APP_ENV` is unset, so prod's current config is unaffected until you opt into setting it.
+
+`server/database.js` also reads `DB_PORT` (defaults to 3306) — set this in the staging `.env` if MariaDB ever moves off the default port.
 
 ## Architecture
 

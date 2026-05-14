@@ -3,6 +3,7 @@ const { execSync } = require('child_process');
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST || '127.0.0.1',
+    port: parseInt(process.env.DB_PORT, 10) || 3306,
     user: process.env.DB_USER || 'poke4trade',
     password: process.env.DB_PASSWORD || 'poke4trade123',
     database: process.env.DB_NAME || 'poke4trade',

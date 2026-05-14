@@ -1,4 +1,22 @@
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
+
+// Env-consistency guard. Refuses to start if APP_ENV looks misaligned with
+// DB_NAME (e.g., staging APP_ENV but a non-staging schema, or vice versa).
+// Dormant when APP_ENV is unset, which is the prod case today.
+if (process.env.APP_ENV) {
+    const dbName = process.env.DB_NAME || 'poke4trade';
+    const isStagingEnv = process.env.APP_ENV === 'staging';
+    const dbLooksStaging = /staging/i.test(dbName);
+    if (isStagingEnv !== dbLooksStaging) {
+        console.error(
+            `FATAL: APP_ENV=${process.env.APP_ENV} but DB_NAME=${dbName} — ` +
+            `refusing to start to prevent a cross-env DB connection.`
+        );
+        process.exit(1);
+    }
+    console.log(`Env guard OK: APP_ENV=${process.env.APP_ENV}, DB_NAME=${dbName}`);
+}
+
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -57,6 +75,7 @@ app.get('/health', (req, res) => {
     res.status(200).json({
         status: 'ok',
         env: process.env.NODE_ENV || 'unknown',
+        app_env: process.env.APP_ENV || null,
         commit: process.env.COMMIT_SHA || 'unknown',
         time: new Date().toISOString()
     });
